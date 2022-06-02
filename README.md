@@ -21,3 +21,14 @@ if [ -f ~/.bash_extra ]; then
     source ~/.bash_extra
 fi
 ~~~
+
+## init.el
+
+My **emacs** basic configuration file.  It seems a bit risky to
+overwrite the default **init.el** file, but that's what I'm going to do
+on a few remote servers to see if it causes trouble.  I'll probably
+save the original **init.el** file under a different name, just in case.
+
+Like **.bash_extra**, the **init.el** will remain in the **dotfiles**
+directory, with a symlink to __~/.emacs.d__.
+
