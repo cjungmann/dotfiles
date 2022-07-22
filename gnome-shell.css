@@ -1,0 +1,53 @@
+@import url("/usr/share/gnome-shell/theme/gnome-classic.css")
+/*
+ * Assuming a custom theme named 'grey' exists and is active,
+ * This file should be at ~/.themes/grey/gnome-shell/gnome-shell.css
+ */
+
+/* Adjust the main panel title bar */
+
+#panel {
+    background-color: #886600;
+    font-size: 0.9em;
+    height:1.5em;
+}
+
+/********************************/
+/*   Terminal title bar         */
+/********************************/
+.titlebar * { min-height:1.0em;  margin:0; padding:0;  }
+.titlebar * * { min-height:1.0em; margin:0; padding:0; }
+
+/********************************/
+/* Dash-to-dock labels          */
+/********************************/
+
+.dash-label {
+  color: black;
+  background-color: rgba(245, 245, 245, 0.96);
+  border-radius: 99px;
+  padding: 6px 12px;
+  text-align: center;
+}
+
+/********************************/
+/* Workspace Matrix style items */
+/********************************/
+
+.switcher-list {
+    padding: 0;
+    border-radius: 16px;
+    box-shadow: none;
+}
+
+.switcher-list .item-box {
+    border-radius: 8px;
+    padding: 12px;
+    /* spacing: 5px; */
+    transition-duration: 100ms;
+    text-algin:center;
+}
+
+.switcher-list .item-box:selected, .switcher-list .item-box:focus {
+    background-color: grey;
+}
