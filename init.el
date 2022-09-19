@@ -89,6 +89,22 @@
   (highlight-regexp "<xsl:template" 'show-paren-mismatch))
 (add-hook 'nxml-mode-hook 'xsl_highlight_templates)
 
+(add-hook 'nroff-mode-hook '(lambda ()
+                              (defface nroff_header
+                                '((t (:background "#336600")))
+                                "Highlighting man macro headers for easier navigation."
+                                :group 'my-faces)
+                              (defface nroff_de
+                                '((t (:background "#663300")))
+                                "Highlighting nroff macro definition request."
+                                :group 'my-faces)
+                              (highlight-regexp "^\\.TH .*" 'nroff_header)
+                              (highlight-regexp "^\\.SH .*" 'nroff_header)
+                              (highlight-regexp "^\\.SS .*" 'nroff_header)
+                              (highlight-regexp "^\\.de.*" 'nroff_de)
+                              )
+          )
+
 (require 'man)
 (set-face-attribute 'Man-overstrike nil :inherit 'bold :foreground "brightcyan")
 (set-face-attribute 'Man-underline nil :inherit 'underline :foreground "brightgreen")
