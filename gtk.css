@@ -1,0 +1,61 @@
+/*
+ Overrides of items in:
+   /usr/share/gnome-shell/theme/gnome-classic.css
+*/
+
+/* under 'Dash' */
+.dash-label {
+    color: black;
+}
+/* under 'Login Dialog' */
+.login-dialog, .unlock-dialog {
+    background-color: white;
+}
+  .switcher-list .switcher-list-item-container {
+      background-color: purple;
+}
+
+.screenshot-ui-panel,
+.workspace-switcher,
+.switcher-list,
+.resize-popup,
+.osd-monitor-label,
+.osd-window {
+    color: black;
+    border-color: green;
+}
+
+.switcher-list .item-box {
+    border: 2px solid purple;
+}
+
+.window-caption {
+    color:purple;
+}
+
+.window-close {
+    color:orange;
+}
+
+.switcher-list {
+    border-color: red;
+    background-color: green;
+}
+  .switcher-list .item-box {
+    background-color: transparent; }
+  .switcher-list .item-box:hover {
+      background-color: orange; }
+  .switcher-list .item-box:selected, .switcher-list .item-box:focus {
+      background-color: orange; }
+  .switcher-list .item-box:selected:hover, .switcher-list .item-box:focus:hover {
+      background-color: orange; }
+  .switcher-list .item-box:selected:active, .switcher-list .item-box:focus:active {
+      background-color: orange; }
+  .switcher-list .item-box:active {
+      background-color: orange; }
+  .switcher-list .item-box:outlined, .switcher-list .item-box:checked {
+      background-color: orange; }
+  .switcher-list .item-box:outlined:active, .switcher-list .item-box:checked:active {
+      background-color: orange; }
+  .switcher-list .item-box:outlined:hover, .switcher-list .item-box:checked:hover {
+      background-color: orange; }
