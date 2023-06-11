@@ -2,10 +2,70 @@
 # ~/.bash_extra
 #
 
+# Uncomment only if bfm builtin and enable_bfm script exist
+# (and if you really want or need bfm (bash floating math)):
+# enable $( enable_bfm )
+
 if [[ $- =~ i ]]; then
-    # 2021-02-01: enclosed non-printing stuff with \[ \] so the (non-printing)
-    # characters are not counted in the prompt length.
-    export PS1="\[\e[32;1m\]\u\[\e[m\]@\[\e[32;1m\]\h\[\e[m\]:\[\e[38;2;255;128;/128m\]\w\[\e[m\]$ "
+    # 2023-06-10 First attempt to using a background color to make it easier
+    # to find the most recent prompt in a wall of characters a la grep, make.
+    # ALSO: switch to array-built prompt string
+    declare nocol=$'\e[m'
+    declare bgcol=$'\e[48;5;53m'
+    declare socol=$'\e[38;5;46m'
+    declare pathcol=$'\e[38;2;255;128;128m'
+    declare -a PSargs=(
+        \\[             # enclose console codes omit from prompt character count
+            $socol
+            $bgcol
+            $'\e[K'     # 'erase' line with background color
+        \\]
+
+        \\u             # user name
+
+        \\[
+            $nocol
+            $bgcol
+        \\]
+
+        '@'             # separator
+
+        \\[
+            $socol
+            $bgcol
+        \\]
+
+        \\h              # host name
+
+        \\[
+            $nocol
+            $bgcol
+        \\]
+
+        :
+
+        \\[
+            $pathcol
+        \\]
+
+        \ \\w\           # current working directory
+
+        \\[
+            $nocol
+            $bgcol
+        \\]
+
+        $\ 
+        \\[
+            $nocol
+        \\]
+    )
+    declare OIFS="$IFS"
+    IFS=''
+    export PS1="${PSargs[*]}"
+    IFS="$OIFS"
+
+    unset OIFS PSargs  nocol bgcol socol pathcol
 
     declare CSI=$'\e['
 
@@ -38,7 +98,7 @@ if [[ $- =~ i ]]; then
     export LESS_TERMCAP_se=$'\e[49m'      # se = end standout, 49 is default background
 
 
-    # Comment-out (for now) obsolete TERM variables
+    # # Comment-out (for now) obsolete TERM variables
     # export LESS_TERMCAP_vb=$'\e[37;1;44m' # vb = visual bell, 33;1 is bold white, 44 is blue background
     # export LESS_TERMCAP_mb=$'\e[5;m'      # mb = start blink,  5 is blink
     # export LESS_TERMCAP_md=$'\e[36;1m'    # md = start bold, 36;1 is bold cyan
@@ -49,6 +109,7 @@ if [[ $- =~ i ]]; then
     # export LESS_TERMCAP_ue=$'\e[m'        # ue = end underline, same console code as meq
 
     alias gdbtui="gdb -tui"
+    alias iptables=/usr/sbin/iptables
 
     if [[ $( uname ) =~ "BSD" ]]; then
         alias ls="ls -G"
