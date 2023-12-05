@@ -6,6 +6,8 @@
 # (and if you really want or need bfm (bash floating math)):
 # enable $( enable_bfm )
 
+export EDITOR='emacs'
+
 if [[ $- =~ i ]]; then
     # 2023-06-10 First attempt to using a background color to make it easier
     # to find the most recent prompt in a wall of characters a la grep, make.
